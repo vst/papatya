@@ -4,6 +4,9 @@ FROM ubuntu:18.04
 ## Who is maintaining this?
 MAINTAINER Vehbi Sinan Tunalioglu <vst@vsthost.com>
 
+## Define the version of the image:
+ENV PAPATYA_VERSION=0.0.1-SNAPSHOT
+
 ## Add installation artifacts:
 ADD install /tmp/install
 
@@ -73,7 +76,9 @@ RUN echo "debconf debconf/frontend select Noninteractive" | debconf-set-selectio
         r-base-core                \
         r-base-dev                 \
         r-cran-devtools            \
-        r-cran-rjava            && \
+        r-cran-rjava               \
+        r-cran-rmarkdown           \
+        r-cran-knitr            && \
     update-java-alternatives -s java-1.8.0-openjdk-amd64            && \
     R CMD javareconf                                                && \
     git clone https://github.com/jeffreyhorner/rapache /tmp/rapache && \
@@ -82,6 +87,10 @@ RUN echo "debconf debconf/frontend select Noninteractive" | debconf-set-selectio
     a2dismod mpm_event                                              && \
     a2enmod mpm_prefork                                             && \
     a2enmod mod_R                                                   && \
+    mkdir /app                                                      && \
+    mkdir /data                                                     && \
+    mkdir /etc/papatya                                              && \
+    cp /tmp/install/startup.R /etc/papatya                          && \
     cp /tmp/install/index.html /var/www/html/                       && \
     cp /tmp/install/000-default.conf /etc/apache2/sites-available/  && \
     rm -rf /tmp/rapache                                             && \
@@ -90,6 +99,12 @@ RUN echo "debconf debconf/frontend select Noninteractive" | debconf-set-selectio
 
 ## Define the port to expose:
 EXPOSE 80
+
+## Define volumes:
+VOLUME /app
+VOLUME /data
+VOLUME /etc/papatya
+VOLUME /var/www/html
 
 ## Default command:
 CMD apachectl -D FOREGROUND
