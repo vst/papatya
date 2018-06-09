@@ -1,3 +1,21 @@
+##' Attempts to load all scripts under the given directory.
+##'
+##' Note that the directory is NOT recursively traversed. Instead, all
+##' immediate `.R` files are *sourced* in the **alphabetical order**.
+##'
+##' @param directory Custom scripts directory.
+##' @return Nothing.
+.loadCustomScripts <- function (directory) {
+    ## Get the sorted list of all `.R` files under the directory:
+    scripts <- sort(list.files(directory, pattern=".*\\.R$", full.names=TRUE))
+
+    ## Iterate over files and source them:
+    ._ <- lapply(scripts, source)
+
+    ## Done, return with shunya:
+    NULL
+}
+
 ##' Renders the given Rhtml or Rmd file with knitr/rmarkdown to an
 ##' HTML file and sends the result as an HTTP response.
 ##'
@@ -42,3 +60,10 @@ raknit <- function (file, ...) {
     ## Done, return shunya:
     NULL
 }
+
+###############
+## PROCEDURE ##
+###############
+
+## Load all custom scripts at in designated directory:
+.loadCustomScripts("/usr/local/share/papatya/startup/custom/")

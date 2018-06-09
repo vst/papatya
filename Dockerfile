@@ -7,8 +7,8 @@ MAINTAINER Vehbi Sinan Tunalioglu <vst@vsthost.com>
 ## Define the version of the image:
 ENV PAPATYA_VERSION=0.0.1-SNAPSHOT
 
-## Add installation artifacts:
-ADD install /tmp/install
+## Install /usr/local/share artifacts:
+ADD install/papatya /usr/local/share/papatya
 
 ## Important Notes
 ## ===============
@@ -77,24 +77,21 @@ RUN echo "debconf debconf/frontend select Noninteractive" | debconf-set-selectio
         r-base-dev                 \
         r-cran-devtools            \
         r-cran-rjava               \
-        r-cran-rmarkdown           \
+        r-cran-markdown            \
         r-cran-knitr            && \
-    update-java-alternatives -s java-1.8.0-openjdk-amd64            && \
-    R CMD javareconf                                                && \
-    git clone https://github.com/jeffreyhorner/rapache /tmp/rapache && \
-    cd /tmp/rapache && ./configure && make && make install && cd -  && \
-    cp /tmp/rapache/debian/mod_R.load /etc/apache2/mods-available   && \
-    a2dismod mpm_event                                              && \
-    a2enmod mpm_prefork                                             && \
-    a2enmod mod_R                                                   && \
-    mkdir /app                                                      && \
-    mkdir /data                                                     && \
-    mkdir /etc/papatya                                              && \
-    cp /tmp/install/startup.R /etc/papatya                          && \
-    cp /tmp/install/index.html /var/www/html/                       && \
-    cp /tmp/install/000-default.conf /etc/apache2/sites-available/  && \
-    rm -rf /tmp/rapache                                             && \
-    rm -rf /tmp/install                                             && \
+    update-java-alternatives -s java-1.8.0-openjdk-amd64                               && \
+    R CMD javareconf                                                                   && \
+    git clone https://github.com/jeffreyhorner/rapache /tmp/rapache                    && \
+    cd /tmp/rapache && ./configure && make && make install && cd -                     && \
+    cp /tmp/rapache/debian/mod_R.load /etc/apache2/mods-available                      && \
+    a2dismod mpm_event                                                                 && \
+    a2enmod mpm_prefork                                                                && \
+    a2enmod mod_R                                                                      && \
+    mkdir /app                                                                         && \
+    mkdir /data                                                                        && \
+    cp /usr/local/share/papatya/apache2/www/index.html /var/www/html/                  && \
+    cp /usr/local/share/papatya/apache2/000-default.conf /etc/apache2/sites-available/ && \
+    rm -rf /tmp/rapache                                                                && \
     apt-get clean
 
 ## Define the port to expose:
@@ -103,7 +100,7 @@ EXPOSE 80
 ## Define volumes:
 VOLUME /app
 VOLUME /data
-VOLUME /etc/papatya
+VOLUME /usr/local/share/papatya/startup/custom
 VOLUME /var/www/html
 
 ## Default command:
