@@ -5,7 +5,7 @@
 ##'
 ##' @param directory Custom scripts directory.
 ##' @return Nothing.
-.loadCustomScripts <- function (directory) {
+.loadStartupScripts <- function (directory) {
     ## Get the sorted list of all `.R` files under the directory:
     scripts <- sort(list.files(directory, pattern=".*\\.R$", full.names=TRUE))
 
@@ -68,5 +68,8 @@ raknit <- function (file, ...) {
 ## Read and keep papatya version:
 .PAPATYA_VERSION <- scan("/usr/local/share/papatya/version", what="character", quiet=TRUE)
 
+## Load all init.d scripts at in designated directory:
+.loadStartupScripts("/usr/local/share/papatya/startup/init.d/")
+
 ## Load all custom scripts at in designated directory:
-.loadCustomScripts("/usr/local/share/papatya/startup/custom/")
+.loadStartupScripts("/usr/local/share/papatya/startup/custom/")
