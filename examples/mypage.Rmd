@@ -1,0 +1,6 @@
+# Daily TODOs (`r Sys.Date()`)
+
+1. Be gentle to R.
+2. Use R.
+3. Stop using R.
+4. Be gentle to R.

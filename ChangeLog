@@ -1,0 +1,11 @@
+VERS: 2018-06-09 ------- release/0.0.1
+
+    * 2018-06-09 76a5b2c Version bumped to 0.0.1 (vst@vsthost.com)
+    * 2018-06-09 4d90c25 README adopts latest Docker image tag (vst@vsthost.com)
+    * 2018-06-09 89ef52e Add papatya version file to application directory (vst@vsthost.com)
+    * 2018-06-09 f4497c1 Added examples, README instructions updated (vst@vsthost.com)
+    * 2018-06-09 0ad9d93 Restructuring + custom startup scripts loader (vst@vsthost.com)
+    * 2018-06-09 89e1017 Enable Rhtml/Rmd, add VOLUMEs, re-config apache2 (vst@vsthost.com)
+    * 2018-06-09 8eee1e7 Use ubuntu base image, add devtools and rJava (vst@vsthost.com)
+    * 2018-06-08 cdfde9f Initial code commit (vst@vsthost.com)
+    * 2018-06-08 fbb2e2b Initial commit (vst@vsthost.com)
