@@ -2,16 +2,16 @@
 
 ## Quickstart
 
-Pull the latest Docker image for the development version:
+Pull the latest *papatya* Docker image:
 
 ```
-docker pull vehbisinan/papatya:develop
+docker pull vehbisinan/papatya:latest
 ```
 
 Run the Docker image without any custom content:
 
 ```
-docker run -d -p 8000:80 --name my-papatya vehbisinan/papatya:develop
+docker run -d -p 8000:80 --name my-papatya vehbisinan/papatya:latest
 ```
 
 By now, you should be able to see the plain/vanilla index page
@@ -32,7 +32,7 @@ Now, run the Docker image by providing the `examples` directory as the
 Web content directory:
 
 ```
-docker run -d -p 8000:80 -v $(pwd)/examples:/var/www/html --name my-papatya vehbisinan/papatya:develop
+docker run -d -p 8000:80 -v $(pwd)/examples:/var/www/html --name my-papatya vehbisinan/papatya:latest
 ```
 
 Test it:
