@@ -84,6 +84,7 @@ RUN echo "debconf debconf/frontend select Noninteractive" | debconf-set-selectio
     a2dismod mpm_event                                                                 && \
     a2enmod mpm_prefork                                                                && \
     a2enmod mod_R                                                                      && \
+    a2enmod cgi                                                                        && \
     mkdir /app                                                                         && \
     mkdir /data                                                                        && \
     cp /usr/local/share/papatya/apache2/www/index.html /var/www/html/                  && \
