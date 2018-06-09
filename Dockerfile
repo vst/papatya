@@ -4,9 +4,6 @@ FROM ubuntu:18.04
 ## Who is maintaining this?
 MAINTAINER Vehbi Sinan Tunalioglu <vst@vsthost.com>
 
-## Define the version of the image:
-ENV PAPATYA_VERSION=0.0.1-SNAPSHOT
-
 ## Install /usr/local/share artifacts:
 ADD install/papatya /usr/local/share/papatya
 

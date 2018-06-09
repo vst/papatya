@@ -2,4 +2,4 @@
 setContentType("application/json")
 
 ## Send the JSON encoded content:
-cat(sprintf("{\"version\": \"\"}\n", Sys.getenv("PAPATYA_VERSION")))
+cat(sprintf("{\"version\": \"%s\"}\n", .PAPATYA_VERSION))

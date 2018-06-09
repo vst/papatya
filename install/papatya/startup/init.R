@@ -65,5 +65,8 @@ raknit <- function (file, ...) {
 ## PROCEDURE ##
 ###############
 
+## Read and keep papatya version:
+.PAPATYA_VERSION <- scan("/usr/local/share/papatya/version", what="character", quiet=TRUE)
+
 ## Load all custom scripts at in designated directory:
 .loadCustomScripts("/usr/local/share/papatya/startup/custom/")
