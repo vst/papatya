@@ -42,6 +42,7 @@ Test it:
 - Run one of your R scripts, say `myscript.R`: [http://localhost:8000/myscript.R](http://localhost:8000/myscript.R)
 - Run one of your Rhtml files, say `mypage.Rhtml`: [http://localhost:8000/mypage.Rhtml](http://localhost:8000/mypage.Rhtml)
 - Run one of your Rmd files, say `mypage.Rmd`: [http://localhost:8000/mypage.Rmd](http://localhost:8000/mypage.Rmd)
+- Run one of your Rmd files with plots, say `mypage_with_plot.Rmd`: [http://localhost:8000/mypage\_with\_plot.Rmd](http://localhost:8000/mypage_with_plot.Rmd)
 
 ## Building the Docker Image
 
