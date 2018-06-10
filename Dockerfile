@@ -102,7 +102,7 @@ EXPOSE 80
 ## Define volumes:
 VOLUME /app
 VOLUME /data
-VOLUME /usr/local/share/papatya/startup/custom
+VOLUME /usr/local/share/papatya/apache2/R/startup/custom
 VOLUME /var/www/html
 
 ## Default command:

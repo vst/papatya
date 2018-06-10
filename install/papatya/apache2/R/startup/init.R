@@ -69,7 +69,7 @@ raknit <- function (file, ...) {
 .PAPATYA_VERSION <- scan("/usr/local/share/papatya/version", what="character", quiet=TRUE)
 
 ## Load all init.d scripts at in designated directory:
-.loadStartupScripts("/usr/local/share/papatya/startup/init.d/")
+.loadStartupScripts("/usr/local/share/papatya/apache2/R/startup/init.d/")
 
 ## Load all custom scripts at in designated directory:
-.loadStartupScripts("/usr/local/share/papatya/startup/custom/")
+.loadStartupScripts("/usr/local/share/papatya/apache2/R/startup/custom/")
