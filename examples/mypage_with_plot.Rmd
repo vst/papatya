@@ -1,0 +1,77 @@
+# A Plot Example
+
+`knitr` is not well suited for serving dynamic content over an
+application container as it does not allow us to set a working
+directory (we fix it within our custom `raknit` method).
+
+Then, there is another issue that all the by-products which are
+created during the `knit` process are not available to the callsite,
+such as images. We need to return a single, standalone HTML file as
+output here.
+
+In the following, we will use hack to generate plain vanilla R plots
+and embed them into the page using *data* links.
+
+## Step 1: Run the business logic and create the plot
+
+This is where you do your analysis or business logic and generate the
+plot. There are three important tweaks:
+
+1. Define and remember the chunk name (We will use `MY-FIRST-CHUNK`).
+2. Add `include=FALSE` as we do not want anything to be added to the document from this chunk.
+3. Assign the return value of the plot function call to a dummy symbol (we won't use it).
+
+Let's do it. Note that we won't attempt to read the image files in
+this chunk as they won't be ready until the chunk is entirely
+processed.
+
+    ```{r "MY-FIRST-CHUNK", include=FALSE}`r ''`
+    ## Let's create a first plot:
+    .dummySymbol1 <- plot(1:10)
+
+    ## And create another plot to demonstrate image file names:
+    .dummySymbol2 <- plot(1:10, type="l")
+    ```
+
+```{r "MY-FIRST-CHUNK", include=FALSE}
+## Let's create a first plot:
+.dummySymbol1 <- plot(1:10)
+
+## And create another plot to demonstrate image file names:
+.dummySymbol2 <- plot(1:10, type="l")
+```
+
+By now, we have two files created in the current working directory:
+
+1. `figure/MY-FIRST-CHUNK-1.png`
+2. `figure/MY-FIRST-CHUNK-2.png`
+
+Note the counter appended to the chunk name on each file name (1, 2, ...).
+
+## Step 2: Create `<img>` tags
+
+Let's generate image tags:
+
+```{r}
+## Read in the two image files:
+file1 <- base64enc::base64encode("figure/MY-FIRST-CHUNK-1.png")
+file2 <- base64enc::base64encode("figure/MY-FIRST-CHUNK-2.png")
+
+## Let's generate the img tags:
+img1 <- sprintf('<img src="data:image/png;base64,%s"/>', file1)
+img2 <- sprintf('<img src="data:image/png;base64,%s"/>', file2)
+```
+
+## Step 3: Output image tags.
+
+We will now use inline style to print our image tags. And that would
+be all. **Note that the output is a standalone HTML document which can
+be serialised and passed to various Internet services.**
+
+    `r '\x60r img1'``
+
+`r img1`
+
+    `r '\x60r img2'``
+
+`r img2`

@@ -16,15 +16,8 @@
     NULL
 }
 
-##' Renders the given Rhtml or Rmd file with knitr/rmarkdown to an
-##' HTML file and sends the result as an HTTP response.
-##'
-##' @param file Path to the Rhtml or Rmd file.
-##' @param ... Extra parameterst to be bassed to knitr (Actually
-##'     rapache is just giving the environment parameter).
-##' @return Nothing as HTTP response is sent during the function
-##'     evaluation.
-raknit <- function (file, ...) {
+## Defines the workhorse function for raknit.
+.raknitWorker <- function (file, ...) {
     ## Get the input extension:
     extension <- tools::file_ext(file)
 
@@ -59,6 +52,31 @@ raknit <- function (file, ...) {
 
     ## Done, return shunya:
     NULL
+}
+
+##' Renders the given Rhtml or Rmd file with knitr/rmarkdown to an
+##' HTML file and sends the result as an HTTP response.
+##'
+##' @param file Path to the Rhtml or Rmd file.
+##' @param ... Extra parameterst to be bassed to knitr (Actually
+##'     rapache is just giving the environment parameter).
+##' @return Nothing as HTTP response is sent during the function
+##'     evaluation.
+raknit <- function (file, ...) {
+    ## Create a temporary directory path as a working directory:
+    dirpath <- tempfile()
+
+    ## Create the directory:
+    dir.create(dirpath)
+
+    ## Copy the source file to the working directory:
+    file.copy(file, dirpath)
+
+    ## Run the workhorse function in the working directory:
+    withr::with_dir(dirpath, .raknitWorker(paste0(dirpath, "/", basename(file)), ...))
+
+    ## Done, remove the working directory for good:
+    unlink(dirpath, recursive=TRUE)
 }
 
 ###############

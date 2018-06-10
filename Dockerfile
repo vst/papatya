@@ -75,10 +75,12 @@ RUN echo "debconf debconf/frontend select Noninteractive" | debconf-set-selectio
         libapreq2-dev              \
         r-base-core                \
         r-base-dev                 \
+        r-cran-base64enc           \
         r-cran-devtools            \
-        r-cran-rjava               \
         r-cran-markdown            \
-        r-cran-knitr            && \
+        r-cran-rjava               \
+        r-cran-knitr               \
+        r-cran-withr            && \
     update-java-alternatives -s java-1.8.0-openjdk-amd64                               && \
     R CMD javareconf                                                                   && \
     git clone https://github.com/jeffreyhorner/rapache /tmp/rapache                    && \
