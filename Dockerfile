@@ -69,6 +69,9 @@ RUN echo "debconf debconf/frontend select Noninteractive" | debconf-set-selectio
         openjdk-8-jdk              \
         apache2                    \
         apache2-dev                \
+        php                        \
+        php-cli                    \
+        libapache2-mod-php         \
         libapreq2-dev              \
         r-base-core                \
         r-base-dev                 \
@@ -83,8 +86,9 @@ RUN echo "debconf debconf/frontend select Noninteractive" | debconf-set-selectio
     cp /tmp/rapache/debian/mod_R.load /etc/apache2/mods-available                      && \
     a2dismod mpm_event                                                                 && \
     a2enmod mpm_prefork                                                                && \
-    a2enmod mod_R                                                                      && \
     a2enmod cgi                                                                        && \
+    a2enmod mod_R                                                                      && \
+    a2enmod php7.2                                                                     && \
     mkdir /app                                                                         && \
     mkdir /data                                                                        && \
     cp /usr/local/share/papatya/apache2/www/index.html /var/www/html/                  && \

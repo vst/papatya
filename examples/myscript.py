@@ -11,4 +11,4 @@ print("Content-Type: application/json")
 print()
 
 ## Say something:
-print("\"500 Miles High\"")
+print("{\"song\": \"500 Miles High\"}")

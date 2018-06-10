@@ -37,10 +37,11 @@ docker run -d -p 8000:80 -v $(pwd)/examples:/var/www/html --name my-papatya vehb
 
 Test it:
 
-1. Run one of your R scripts, say `myscript.R`: [http://localhost:8000/myscript.R](http://localhost:8000/myscript.R)
-4. Run one of your Python CGI scripts, say `myscript.py`: [http://localhost:8000/myscript.py](http://localhost:8000/myscript.py)
-2. Run one of your Rhtml files, say `mypage.Rhtml`: [http://localhost:8000/mypage.Rhtml](http://localhost:8000/mypage.Rhtml)
-3. Run one of your Rmd files, say `mypage.Rmd`: [http://localhost:8000/mypage.Rmd](http://localhost:8000/mypage.Rmd)
+- Run one of your PHP scripts, say `myscript.php`: [http://localhost:8000/myscript.php](http://localhost:8000/myscript.php)
+- Run one of your Python CGI scripts, say `myscript.py`: [http://localhost:8000/myscript.py](http://localhost:8000/myscript.py)
+- Run one of your R scripts, say `myscript.R`: [http://localhost:8000/myscript.R](http://localhost:8000/myscript.R)
+- Run one of your Rhtml files, say `mypage.Rhtml`: [http://localhost:8000/mypage.Rhtml](http://localhost:8000/mypage.Rhtml)
+- Run one of your Rmd files, say `mypage.Rmd`: [http://localhost:8000/mypage.Rmd](http://localhost:8000/mypage.Rmd)
 
 ## Building the Docker Image
 
