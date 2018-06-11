@@ -89,6 +89,7 @@ RUN echo "debconf debconf/frontend select Noninteractive" | debconf-set-selectio
     a2dismod mpm_event                                                                 && \
     a2enmod mpm_prefork                                                                && \
     a2enmod cgi                                                                        && \
+    a2enmod headers                                                                    && \
     a2enmod mod_R                                                                      && \
     a2enmod php7.2                                                                     && \
     mkdir /app                                                                         && \
