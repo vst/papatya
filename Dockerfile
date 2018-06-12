@@ -80,7 +80,8 @@ RUN echo "debconf debconf/frontend select Noninteractive" | debconf-set-selectio
         r-cran-markdown            \
         r-cran-rjava               \
         r-cran-knitr               \
-        r-cran-withr            && \
+        r-cran-withr               \
+        r-cran-xml2             && \
     update-java-alternatives -s java-1.8.0-openjdk-amd64                               && \
     R CMD javareconf                                                                   && \
     git clone https://github.com/jeffreyhorner/rapache /tmp/rapache                    && \
