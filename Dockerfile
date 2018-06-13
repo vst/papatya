@@ -98,7 +98,8 @@ RUN echo "debconf debconf/frontend select Noninteractive" | debconf-set-selectio
     cp /usr/local/share/papatya/apache2/www/index.html /var/www/html/                  && \
     cp /usr/local/share/papatya/apache2/000-default.conf /etc/apache2/sites-available/ && \
     rm -rf /tmp/rapache                                                                && \
-    apt-get clean
+    apt-get clean                                                                      && \
+    echo "export LD_LIBRARY_PATH=/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64/server/" >> /etc/apache2/envvars
 
 ## Define the port to expose:
 EXPOSE 80
