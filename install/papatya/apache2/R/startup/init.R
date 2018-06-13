@@ -63,6 +63,12 @@
 ##' @return Nothing as HTTP response is sent during the function
 ##'     evaluation.
 raknit <- function (file, ...) {
+    ## Workout the non GET/POST requests.
+    if (!(SERVER$method %in% c("GET", "POST"))) {
+        ## Nothing to be done here. Return.
+        return()
+    }
+
     ## Create a temporary directory path as a working directory:
     dirpath <- tempfile()
 
