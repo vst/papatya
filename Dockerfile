@@ -69,13 +69,19 @@ RUN echo "debconf debconf/frontend select Noninteractive" | debconf-set-selectio
         openjdk-8-jdk              \
         apache2                    \
         apache2-dev                \
+        php                        \
+        php-cli                    \
+        libapache2-mod-php         \
         libapreq2-dev              \
         r-base-core                \
         r-base-dev                 \
+        r-cran-base64enc           \
         r-cran-devtools            \
-        r-cran-rjava               \
         r-cran-markdown            \
-        r-cran-knitr            && \
+        r-cran-rjava               \
+        r-cran-knitr               \
+        r-cran-withr               \
+        r-cran-xml2             && \
     update-java-alternatives -s java-1.8.0-openjdk-amd64                               && \
     R CMD javareconf                                                                   && \
     git clone https://github.com/jeffreyhorner/rapache /tmp/rapache                    && \
@@ -83,13 +89,17 @@ RUN echo "debconf debconf/frontend select Noninteractive" | debconf-set-selectio
     cp /tmp/rapache/debian/mod_R.load /etc/apache2/mods-available                      && \
     a2dismod mpm_event                                                                 && \
     a2enmod mpm_prefork                                                                && \
+    a2enmod cgi                                                                        && \
+    a2enmod headers                                                                    && \
     a2enmod mod_R                                                                      && \
+    a2enmod php7.2                                                                     && \
     mkdir /app                                                                         && \
     mkdir /data                                                                        && \
     cp /usr/local/share/papatya/apache2/www/index.html /var/www/html/                  && \
     cp /usr/local/share/papatya/apache2/000-default.conf /etc/apache2/sites-available/ && \
     rm -rf /tmp/rapache                                                                && \
-    apt-get clean
+    apt-get clean                                                                      && \
+    echo "export LD_LIBRARY_PATH=/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64/server/" >> /etc/apache2/envvars
 
 ## Define the port to expose:
 EXPOSE 80
@@ -97,7 +107,7 @@ EXPOSE 80
 ## Define volumes:
 VOLUME /app
 VOLUME /data
-VOLUME /usr/local/share/papatya/startup/custom
+VOLUME /usr/local/share/papatya/apache2/R/startup/custom
 VOLUME /var/www/html
 
 ## Default command:
