@@ -1,5 +1,23 @@
-VERS: 2018-06-09 ------- release/0.0.1
+VERS: 2018-06-21 ------- release/0.0.2
 
+    * 2018-06-21 5d9c71d Version bumped to 0.0.2 (vst@vsthost.com)
+    * 2018-06-14 19590e3 Fix to enable rJava on rapache (vst@vsthost.com)
+    * 2018-06-13 1f13b2a Non GET/POST requests pass through Rmd/Rhtml (vst@vsthost.com)
+    * 2018-06-13 b56472a Add r-cran-xml2 package (vst@vsthost.com)
+    * 2018-06-13 5e8f341 Allow all headers on OPTIONS (vst@vsthost.com)
+    * 2018-06-11 2eed106 htttpd: Access control allow all origin (vst@vsthost.com)
+    * 2018-06-11 beba12b Updated example links in README (vst@vsthost.com)
+    * 2018-06-11 5c0458d Rmd/Rhtml rendered in temp dir, plot example added (vst@vsthost.com)
+    * 2018-06-10 9b3de41 Installation directory re-organisation (vst@vsthost.com)
+    * 2018-06-10 9f261aa PHP enabled, examples updated (vst@vsthost.com)
+    * 2018-06-10 c133582 init.d in addition to custom for startup scripts (vst@vsthost.com)
+    * 2018-06-10 cf6cca5 Enable Python CGI scripting (vst@vsthost.com)
+    * 2018-06-09 a17d754 Version bumped to 0.0.2-SNAPSHOT (vst@vsthost.com)
+
+VERS: 2018-06-09 589ae5d 0.0.1 (vst@vsthost.com)
+
+    * 2018-06-09 68462d0 Merge branch 'release/0.0.1' (vst@vsthost.com)
+    * 2018-06-09 c5799a4 Change log updated (vst@vsthost.com)
     * 2018-06-09 76a5b2c Version bumped to 0.0.1 (vst@vsthost.com)
     * 2018-06-09 4d90c25 README adopts latest Docker image tag (vst@vsthost.com)
     * 2018-06-09 89ef52e Add papatya version file to application directory (vst@vsthost.com)
